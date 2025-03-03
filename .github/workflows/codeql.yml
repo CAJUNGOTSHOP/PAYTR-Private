@@ -89,16 +89,13 @@ jobs:
         echo '  make bootstrap'
         echo '  make release'
         exit 1
-
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
-      with:- name: Perform CodeQL Analysis
+- name: Perform CodeQL Analysis
   uses: github/codeql-action/analyze@v3
   with:
     category: "/language:${{ matrix.language }}"
     # Token for the repository. Can be passed in using `{{ secrets.GITHUB_TOKEN }}`.
-    repo-token: # optional, default is ${{ github.token }}
-    # The message to post on the issue when tagging it. If none provided, will not mark issues stale.
+    repo-token: ${{ github.token }} # optional, default is ${{ github.token }}
+    # The message to post on the issue when tagging it. If 
     stale-issue-message: # optional
     # The message to post on the pull request when tagging it. If none provided, will not mark pull requests stale.
     stale-pr-message: # optional
